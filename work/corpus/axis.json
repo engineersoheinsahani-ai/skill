@@ -1,0 +1,16 @@
+{
+ "title": "A leakage-audited, uncertainty-calibrated pipeline for residential energy prediction: national-scale evidence from 18,496 U.S. households with climate-regime generalisation and simulation-validated retrofit bounds",
+ "terms": [
+  "Residential energy prediction",
+  "Building stock modelling",
+  "Data leakage audit",
+  "Conformal prediction",
+  "Uncertainty quantification",
+  "Climate-regime generalisation",
+  "Retrofit savings",
+  "Energy performance gap",
+  "RECS"
+ ],
+ "source": "manuscript keywords",
+ "manuscript": "/home/user/uploads/manuscript_final.txt"
+}

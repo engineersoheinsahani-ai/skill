@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "approved revision",
+  "type": "object",
+  "required": ["id", "section", "old", "new", "rationale", "approved"],
+  "properties": {
+    "id": {"type": "string"},
+    "section": {"type": "string"},
+    "old": {"type": "string", "description": "exact unique span to replace"},
+    "new": {"type": "string"},
+    "rationale": {"type": "string"},
+    "rule": {"type": "string"},
+    "finding_id": {"type": "string", "description": "matrix finding this revision closes"},
+    "approved": {"type": "boolean", "description": "ONLY the author may set true"}
+  }
+}

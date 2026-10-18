@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "journal-arena finding v3 (dual-grounded, decision-valued)",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "gid",
+    "verdict",
+    "lit_quote",
+    "lit_tier",
+    "severity",
+    "action"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "description": "registry id of the manuscript claim (E1) or audit item id"
+    },
+    "gid": {
+      "type": "string",
+      "enum": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "COUNCIL"
+      ]
+    },
+    "verdict": {
+      "type": "string",
+      "description": "group-specific verdict vocabulary (see task/10b-group-playbooks.md)"
+    },
+    "lit_quote_id": {
+      "type": "string",
+      "pattern": "^L:((g|e)\\d+-\\d+|seed-\\d+|shared-\\d+|rule-[a-z0-9-]+)$",
+      "description": "ledger anchor [L:gid-nnn] or rulebook anchor rule-<checklist-id> (audit 2.2 fix: e*/seed ids were rejected by the old g-only pattern)"
+    },
+    "lit_quote": {
+      "type": "string",
+      "minLength": 15,
+      "description": "exact quote from STUDIED LITERATURE (law 2a)"
+    },
+    "lit_locator": {
+      "type": "string",
+      "description": "§/¶/table locator inside the cited work"
+    },
+    "lit_tier": {
+      "type": "string",
+      "enum": [
+        "body",
+        "abstract",
+        "metadata",
+        "rulebook"
+      ],
+      "description": "metadata => finding is quarantined"
+    },
+    "ms_quote": {
+      "type": "string",
+      "description": "exact manuscript quote, ONLY for claim mapping (law 2b)"
+    },
+    "ms_locator": {
+      "type": "string"
+    },
+    "effect_vs_claim": {
+      "type": "string",
+      "description": "numeric comparison: claimed magnitude vs measured/literature magnitude"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "fatal",
+        "major",
+        "minor",
+        "style"
+      ],
+      "description": "canonical v3 vocab; v2 'blocker' ≡ 'fatal' (mapped in matrix3.py, audit 2.3)"
+    },
+    "action": {
+      "type": "string",
+      "maxLength": 240,
+      "description": "ONE actionable move (decision-value law: <=3 per agent)"
+    },
+    "owner_group": {
+      "type": "string"
+    },
+    "quarantined": {
+      "type": "boolean",
+      "default": false,
+      "description": "true if lit anchor missing or tier=metadata"
+    },
+    "executor": {
+      "type": "string",
+      "description": "who produced this finding: model@stamp#i or 'single-model-session'"
+    },
+    "indep": {
+      "type": "string",
+      "enum": [
+        "machine",
+        "harness",
+        "human",
+        "single"
+      ],
+      "description": "harness = separate model call via engine/harness.py; human = owner/reading agent; single = one model wearing hats (law 9: cannot confirm P0 alone)"
+    },
+    "anchor_type": {
+      "type": "string",
+      "enum": [
+        "corpus",
+        "rulebook",
+        "machine",
+        "repo"
+      ],
+      "description": "rulebook/machine = deterministic compliance finding; exempt from law-2 literature anchor but the rule id must exist in checklists/ or engine/precheck.py (machine-verified)"
+    },
+    "machine_verified": {
+      "type": "string",
+      "description": "id of the deterministic check confirming this finding (e.g. 'precheck LEFTOVER-001') — satisfies law-9 P0 confirmation"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lit_tier": {
+            "const": "metadata"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "quarantined": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "gid": {
+            "const": "E9"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "severity": {
+            "const": "style"
+          }
+        }
+      }
+    }
+  ]
+}

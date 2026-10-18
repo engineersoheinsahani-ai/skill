@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "review finding",
+  "type": "object",
+  "required": ["id", "severity", "section", "quote", "issue", "suggestion", "axis_link"],
+  "properties": {
+    "id": {"type": "string", "description": "unique finding id, e.g. G6-003"},
+    "group": {"type": "string", "description": "duty group id G1..G16 or P1-precheck"},
+    "severity": {"enum": ["blocker", "major", "minor", "style"]},
+    "section": {"type": "string", "description": "manuscript block/section from manuscript-map.json"},
+    "quote": {"type": "string", "description": "EXACT span (or '(absent)'/'(structural)' for missing/structural items)"},
+    "issue": {"type": "string"},
+    "suggestion": {"type": "string", "description": "concrete in-scope fix; must not inflate claims (CLM-6)"},
+    "axis_link": {"type": "string", "description": "why this serves the core claim or an ENB acceptance requirement"},
+    "rule": {"type": "string", "description": "rule id: ENB-*, POL-*, SAGER-*, DAT-*, CRED-*, REF-*, CLM-*, TTL-*"},
+    "effort": {"enum": ["trivial", "small", "medium", "large"]},
+    "risk_if_ignored": {"type": "string"},
+    "source_mode": {"enum": ["live", "distilled"], "description": "live = agent read SRC urls itself"},
+    "verified_via": {"type": "array", "items": {"type": "object", "required": ["url", "accessed"],
+      "properties": {"url": {"type": "string"}, "accessed": {"type": "string"}}},
+      "description": "web checks performed under the verification license"},
+    "claim_inflation": {"type": "boolean", "description": "G11 meta-audit: suggestion implies a claim above the evidence"}
+  }
+}

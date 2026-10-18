@@ -1,0 +1,163 @@
+{
+ "meta": {
+  "title": "A leakage-audited, uncertainty-calibrated pipeline for residential energy prediction: national-scale evidence from 18,496 U.S. households with climate-regime generalisation and simulation-validated retrofit bounds",
+  "title_words": 22,
+  "keywords": [
+   "Residential energy prediction",
+   "Building stock modelling",
+   "Data leakage audit",
+   "Conformal prediction",
+   "Uncertainty quantification",
+   "Climate-regime generalisation",
+   "Retrofit savings",
+   "Energy performance gap",
+   "RECS"
+  ],
+  "n_keywords": 9,
+  "abstract_words": 273,
+  "highlights_bullets": [
+   "Nine-test leakage audit per run; 16-day re-execution reproduces metrics",
+   "Conformal intervals from an untouched split: 90.2% coverage at 90%",
+   "Honest RECS 2020 ceiling: test R2 0.64 unweighted, 0.76 log out-of-fold",
+   "LOGO mean R2 0.70; sim-to-survey transfer adds nothing measurable",
+   "Naive retrofit estimate flips sign; matched-cell correction restores it"
+  ],
+  "highlights_bullet_lens": [
+   71,
+   66,
+   71,
+   65,
+   71
+  ],
+  "highlights_stray_lines": [
+   "A leakage-audited, uncertainty-calibrated pipeline for residential",
+   "energy prediction: national-scale evidence from RECS 2020",
+   "Iman Ansari, Hosein Hasani"
+  ],
+  "tables_defined": [
+   1,
+   2,
+   4,
+   5
+  ],
+  "tables_cited": [
+   1,
+   2,
+   4,
+   5
+  ],
+  "figures_defined": [],
+  "figures_cited": [
+   1,
+   2,
+   3,
+   4,
+   6
+  ],
+  "n_reference_entries": 18,
+  "reference_heads": [
+   "ABCB / DCCEEW (Australian Building Codes Board; Department of Climate Change, Energy, the ",
+   "Amasyali, M., El-Gohary, N.M., 2018. A review of data-driven building energy consumption p",
+   "Chen, Z., Chen, X., Xu, C., Zuo, J., 2023. Interpretable machine learning for building ene",
+   "Dong, B., Lam, K.P., Huang, Y.C., Dobbs, G.M., 2021. Occupant behavior modeling methods fo",
+   "Hong, T., Li, H., 2026. Good practices for documenting AI-based studies on energy and buil",
+   "Hong, T., Wang, Z., Luo, X., Zhang, W., 2020. State-of-the-art on research and application",
+   "Kapoor, S., Narayanan, A., 2023. Leakage and the reproducibility crisis in machine-learnin",
+   "Menezes, A.C., Cripps, A., Bouchlaghem, D., Buswell, R., 2012. Predicted vs. actual energy",
+   "Mitchell, T.M., 1997. Machine Learning. McGraw-Hill, New York.",
+   "National Renewable Energy Laboratory, 2025. ResStock 2025.1: National residential building",
+   "NeurIPS, 2025. NeurIPS paper checklist guidelines. https://neurips.cc/.",
+   "Seyedzadeh, S., Rahimian, F.P., Glesk, I., Roper, M., 2018. Machine learning for estimatio",
+   "U.S. Energy Information Administration, 2023. Residential Energy Consumption Survey (RECS)",
+   "Vovk, V., Gammerman, A., Shafer, G., 2005. Algorithmic Learning in a Random World. Springe",
+   "Wang, Z., Srinivasan, R.S., 2017. A review of artificial intelligence based building energ",
+   "Wang, Z., Srinivasan, R.S., 2021. Practical issues in implementing machine-learning models",
+   "Wilcox, S., Marion, W., 2008. Users Manual for TMY3 Data Sets. Technical Report NREL/TP-58",
+   "Xu, X., Wang, G., Hong, T., Miller, C., Li, H., Ding, Y., 2025. Systematic review on uncer"
+  ],
+  "in_text_citations": [
+   "Amasyali and El-Gohary, 2018",
+   "Dong et al., 2021",
+   "Dong, Lam, Huang and Dobbs, 2021",
+   "Hong and Li, 2026",
+   "Mitchell, 1997",
+   "NeurIPS, 2025",
+   "Vovk, Gammerman and Shafer, 2005",
+   "Wang and Srinivasan, 2017",
+   "Wilcox and Marion, 2008",
+   "Xu et al., 2025"
+  ],
+  "body_words": 5417,
+  "has_revision_notes": true,
+  "sections_order": [
+   "REVISION NOTES (delete before submission)",
+   "Highlights",
+   "TITLE PAGE",
+   "ABSTRACT",
+   "NOMENCLATURE",
+   "1. INTRODUCTION",
+   "2. DATA",
+   "3. METHODOLOGY",
+   "4. RESULTS",
+   "5. DISCUSSION",
+   "6. CONCLUSIONS",
+   "DECLARATIONS",
+   "REFERENCES"
+  ]
+ },
+ "blocks": [
+  {
+   "head": "REVISION NOTES (delete before submission)",
+   "words": 93
+  },
+  {
+   "head": "Highlights",
+   "words": 65
+  },
+  {
+   "head": "TITLE PAGE",
+   "words": 85
+  },
+  {
+   "head": "ABSTRACT",
+   "words": 273
+  },
+  {
+   "head": "NOMENCLATURE",
+   "words": 73
+  },
+  {
+   "head": "1. INTRODUCTION",
+   "words": 647
+  },
+  {
+   "head": "2. DATA",
+   "words": 457
+  },
+  {
+   "head": "3. METHODOLOGY",
+   "words": 804
+  },
+  {
+   "head": "4. RESULTS",
+   "words": 1285
+  },
+  {
+   "head": "5. DISCUSSION",
+   "words": 912
+  },
+  {
+   "head": "6. CONCLUSIONS",
+   "words": 120
+  },
+  {
+   "head": "DECLARATIONS",
+   "words": 205
+  },
+  {
+   "head": "REFERENCES",
+   "words": 398
+  }
+ ],
+ "note": "real output of engine/manuscript_map.py on the owner's manuscript (2026-10-11); sections text intentionally NOT bundled"
+}
