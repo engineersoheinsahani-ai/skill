@@ -1,0 +1,51 @@
+{
+  "version": "8.1",
+  "run_stamp": "20260911_123303",
+  "n_train": 2800,
+  "n_val": 400,
+  "n_calib": 200,
+  "n_test": 600,
+  "n_features_selected": 250,
+  "n_features_final": 252,
+  "tl_used": true,
+  "tl_ablation_r2": 0.6004301230225401,
+  "primary_test_r2_total": 0.6038371875542776,
+  "primary_test_r2_eui": 0.5683178869748351,
+  "ensemble_test_r2_total": 0.6093616535234905,
+  "conformal_mode": "calib-split",
+  "conformal_coverage_90": 0.845,
+  "population_calibration_error_pct": -11.238427216143746,
+  "logo_mean_r2": 0.6582146647624341,
+  "leakage_audit_passed": true,
+  "leakage_audit_json": "/home/user/building_energy_pipeline/outputs/tables/leakage_audit_20260911_124711.json",
+  "seed_comparisons": {
+    "tl_effect_xgb": "within_noise",
+    "tl_effect_lgb": "within_noise",
+    "stacking_effect": "within_noise"
+  },
+  "routing": {
+    "heating": "share",
+    "cooling": "share",
+    "dhw": "share",
+    "lighting": "direct"
+  },
+  "task_val_scores": {
+    "heating": {
+      "share_r2": 0.7217699177608428,
+      "direct_r2": 0.7193859055352607
+    },
+    "cooling": {
+      "share_r2": 0.5510206333520546,
+      "direct_r2": 0.5487313042860664
+    },
+    "dhw": {
+      "share_r2": 0.6876206432459333,
+      "direct_r2": 0.6797765318996066
+    },
+    "lighting": {
+      "share_r2": 0.18039188804918438,
+      "direct_r2": 0.3891765969363713
+    }
+  },
+  "runtime_seconds": 859.0
+}

@@ -1,0 +1,29 @@
+{
+  "method": "shap",
+  "n_rows_shap": 800,
+  "top_k": 10,
+  "values": {
+    "FUELHEAT": 0.15417177975177765,
+    "TL_pred_logbtu": 0.1062452420592308,
+    "TYPEHUQ": 0.09687240421772003,
+    "FUELH2O": 0.08727103471755981,
+    "PH_vintage_x_HDD": 0.04024529829621315,
+    "PH_occ_x_sqft": 0.03683406487107277,
+    "PH_ceiling_insul": 0.031593888998031616,
+    "TEMPHOME": 0.024119295179843903,
+    "PH_window_wall_ratio": 0.024093003943562508,
+    "PH_base_load": 0.021468335762619972
+  },
+  "top_features": [
+    "FUELHEAT",
+    "TL_pred_logbtu",
+    "TYPEHUQ",
+    "FUELH2O",
+    "PH_vintage_x_HDD",
+    "PH_occ_x_sqft",
+    "PH_ceiling_insul",
+    "TEMPHOME",
+    "PH_window_wall_ratio",
+    "PH_base_load"
+  ]
+}

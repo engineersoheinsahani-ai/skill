@@ -1,0 +1,358 @@
+{
+  "audit_version": "8.1",
+  "pipeline_version": "8.0",
+  "timestamp": "2026-09-10T02:18:42",
+  "passed": true,
+  "real_tests": [
+    "A_train",
+    "A_val",
+    "A_calib",
+    "A_test",
+    "B",
+    "C",
+    "D",
+    "F",
+    "G",
+    "H"
+  ],
+  "n_real_tests": 9,
+  "non_test_flags": [
+    "E (early-warning)",
+    "F (procedural)"
+  ],
+  "forbidden_patterns": [
+    "BTU",
+    "KWH",
+    "THERMS",
+    "GALLON",
+    "CUFEET",
+    "DOL",
+    "WOODAMT",
+    "PELLETS",
+    "EUI",
+    "INTENSITY",
+    "SHARE"
+  ],
+  "always_exclude": [
+    "DOEID",
+    "NWEIGHT"
+  ],
+  "removed_by_guard": [
+    "DOEID",
+    "NWEIGHT",
+    "KWH",
+    "BTUEL",
+    "DOLLAREL",
+    "ELXBTU",
+    "KWHSPH",
+    "KWHCOL",
+    "KWHWTH",
+    "KWHRFG",
+    "KWHRFG1",
+    "KWHRFG2",
+    "KWHFRZ",
+    "KWHCOK",
+    "KWHMICRO",
+    "KWHCW",
+    "KWHCDR",
+    "KWHDWH",
+    "KWHLGT",
+    "KWHTVREL",
+    "KWHTV1",
+    "KWHTV2",
+    "KWHTV3",
+    "KWHAHUHEAT",
+    "KWHAHUCOL",
+    "KWHCFAN",
+    "KWHDHUM",
+    "KWHHUM",
+    "KWHPLPMP",
+    "KWHHTBPMP",
+    "KWHHTBHEAT",
+    "KWHEVCHRG",
+    "KWHNEC",
+    "KWHOTH",
+    "BTUELSPH",
+    "BTUELCOL",
+    "BTUELWTH",
+    "BTUELRFG",
+    "BTUELRFG1",
+    "BTUELRFG2",
+    "BTUELFRZ",
+    "BTUELCOK",
+    "BTUELMICRO",
+    "BTUELCW",
+    "BTUELCDR",
+    "BTUELDWH",
+    "BTUELLGT",
+    "BTUELTVREL",
+    "BTUELTV1",
+    "BTUELTV2",
+    "BTUELTV3",
+    "BTUELAHUHEAT",
+    "BTUELAHUCOL",
+    "BTUELCFAN",
+    "BTUELDHUM",
+    "BTUELHUM",
+    "BTUELPLPMP",
+    "BTUELHTBPMP",
+    "BTUELHTBHEAT",
+    "BTUELEVCHRG",
+    "BTUELNEC",
+    "BTUELOTH",
+    "DOLELSPH",
+    "DOLELCOL",
+    "DOLELWTH",
+    "DOLELRFG",
+    "DOLELRFG1",
+    "DOLELRFG2",
+    "DOLELFRZ",
+    "DOLELCOK",
+    "DOLELMICRO",
+    "DOLELCW",
+    "DOLELCDR",
+    "DOLELDWH",
+    "DOLELLGT",
+    "DOLELTVREL",
+    "DOLELTV1",
+    "DOLELTV2",
+    "DOLELTV3",
+    "DOLELAHUHEAT",
+    "DOLELAHUCOL",
+    "DOLELCFAN",
+    "DOLELDHUM",
+    "DOLELHUM",
+    "DOLELPLPMP",
+    "DOLELHTBPMP",
+    "DOLELHTBHEAT",
+    "DOLELEVCHRG",
+    "DOLELNEC",
+    "DOLELOTH",
+    "CUFEETNG",
+    "BTUNG",
+    "DOLLARNG",
+    "NGXBTU",
+    "BTUNGSPH",
+    "BTUNGWTH",
+    "BTUNGCOK",
+    "BTUNGCDR",
+    "BTUNGPLHEAT",
+    "BTUNGHTBHEAT",
+    "BTUNGNEC",
+    "BTUNGOTH",
+    "CUFEETNGSPH",
+    "CUFEETNGWTH",
+    "CUFEETNGCOK",
+    "CUFEETNGCDR",
+    "CUFEETNGPLHEAT",
+    "CUFEETNGHTBHEAT",
+    "CUFEETNGNEC",
+    "CUFEETNGOTH",
+    "DOLNGSPH",
+    "DOLNGWTH",
+    "DOLNGCOK",
+    "DOLNGCDR",
+    "DOLNGPLHEAT",
+    "DOLNGHTBHEAT",
+    "DOLNGNEC",
+    "DOLNGOTH",
+    "GALLONLP",
+    "BTULP",
+    "DOLLARLP",
+    "LPXBTU",
+    "BTULPSPH",
+    "BTULPWTH",
+    "BTULPCOK",
+    "BTULPCDR",
+    "BTULPNEC",
+    "BTULPOTH",
+    "GALLONLPSPH",
+    "GALLONLPWTH",
+    "GALLONLPCOK",
+    "GALLONLPCDR",
+    "GALLONLPNEC",
+    "GALLONLPOTH",
+    "DOLLPSPH",
+    "DOLLPWTH",
+    "DOLLPCOK",
+    "DOLLPCDR",
+    "DOLLPNEC",
+    "DOLLPOTH",
+    "GALLONFO",
+    "BTUFO",
+    "DOLLARFO",
+    "FOXBTU",
+    "BTUFOSPH",
+    "BTUFOWTH",
+    "BTUFONEC",
+    "BTUFOOTH",
+    "GALLONFOSPH",
+    "GALLONFOWTH",
+    "GALLONFONEC",
+    "GALLONFOOTH",
+    "DOLFOSPH",
+    "DOLFOWTH",
+    "DOLFONEC",
+    "DOLFOOTH",
+    "BTUWD",
+    "TOTALBTUSPH",
+    "TOTALDOLSPH",
+    "TOTALBTUWTH",
+    "TOTALDOLWTH",
+    "TOTALBTUOTH",
+    "TOTALDOLOTH",
+    "TOTALBTU",
+    "TOTALDOL",
+    "EUI",
+    "EUI_HEATING",
+    "SHARE_HEATING",
+    "EUI_COOLING",
+    "SHARE_COOLING",
+    "EUI_DHW",
+    "SHARE_DHW",
+    "EUI_LIGHTING",
+    "SHARE_LIGHTING",
+    "PH_eui_estimate",
+    "PH_heating_share_est",
+    "PH_cooling_share_est",
+    "PH_dhw_share_est"
+  ],
+  "n_removed_by_guard": 178,
+  "checks": {
+    "A_train": true,
+    "A_val": true,
+    "A_calib": true,
+    "A_test": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "F": true,
+    "G": true,
+    "H": true
+  },
+  "detail": {
+    "A_train": {
+      "forbidden_found": []
+    },
+    "A_val": {
+      "forbidden_found": []
+    },
+    "A_calib": {
+      "forbidden_found": []
+    },
+    "A_test": {
+      "forbidden_found": []
+    },
+    "B": {
+      "threshold": 0.9,
+      "flagged": []
+    },
+    "C": {
+      "duplicate_rows": 0
+    },
+    "D": {
+      "mode": "verified",
+      "flag": true,
+      "numeric_cols_checked": 144,
+      "max_median_rel_dev": 0.0,
+      "cat_cols_checked": 556,
+      "encoder_categories_subset_of_train": true
+    },
+    "E": {
+      "status": "warning-flag (not counted as a test)",
+      "flagged": {}
+    },
+    "F": {
+      "status": "procedural metadata (not counted as a test)",
+      "selection_on_train": true
+    },
+    "G": {
+      "max_features": 4,
+      "r2_limit": 0.95,
+      "scales": {
+        "log1p_target": {
+          "max_r2": 0.6523645922492316,
+          "group": [
+            "TL_pred_logbtu",
+            "FUELHEAT",
+            "TYPEHUQ",
+            "TVCOLOR"
+          ],
+          "curve": [
+            {
+              "k": 1,
+              "added": "TL_pred_logbtu",
+              "r2": 0.4781
+            },
+            {
+              "k": 2,
+              "added": "FUELHEAT",
+              "r2": 0.5835
+            },
+            {
+              "k": 3,
+              "added": "TYPEHUQ",
+              "r2": 0.6344
+            },
+            {
+              "k": 4,
+              "added": "TVCOLOR",
+              "r2": 0.6524
+            }
+          ],
+          "n": 2800
+        },
+        "raw_target": {
+          "max_r2": 0.5643415833678753,
+          "group": [
+            "TL_pred_logbtu",
+            "FUELHEAT",
+            "SQFTEST",
+            "POOLPUMP"
+          ],
+          "curve": [
+            {
+              "k": 1,
+              "added": "TL_pred_logbtu",
+              "r2": 0.4472
+            },
+            {
+              "k": 2,
+              "added": "FUELHEAT",
+              "r2": 0.5122
+            },
+            {
+              "k": 3,
+              "added": "SQFTEST",
+              "r2": 0.547
+            },
+            {
+              "k": 4,
+              "added": "POOLPUMP",
+              "r2": 0.5643
+            }
+          ],
+          "n": 2800
+        }
+      }
+    },
+    "H": {
+      "patterns": [
+        "TOTALBTU",
+        "BTUSPH",
+        "BTUELCOL",
+        "BTUWTH",
+        "BTUELLGT",
+        "EUI",
+        "SHARE_",
+        "KWH",
+        "THERMS",
+        "DOL"
+      ],
+      "found": []
+    }
+  },
+  "tripwire_features": [],
+  "duplicate_rows": 0,
+  "linear_combination_flagged": []
+}
