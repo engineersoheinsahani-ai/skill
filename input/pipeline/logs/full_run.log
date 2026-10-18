@@ -1,0 +1,321 @@
+2026-09-10 02:32:53,023 | INFO     | MainPipeline | ======================================================================
+2026-09-10 02:32:53,023 | INFO     | MainPipeline |   PHYSICS-INFORMED ENERGY-CONSERVING PIPELINE v8.1
+2026-09-10 02:32:53,023 | INFO     | MainPipeline |   Target: Energy and Buildings (Q1, IF=8.0)
+2026-09-10 02:32:53,023 | INFO     | MainPipeline | ======================================================================
+2026-09-10 02:32:53,023 | INFO     | MainPipeline |   RECS nrows: ALL | Max features: 250
+2026-09-10 02:32:53,023 | INFO     | MainPipeline |   ResStock upgrades: [0, 3, 4, 10, 11, 15] | Transfer: True
+2026-09-10 02:32:53,024 | INFO     | MainPipeline |   Weights: True | Optimize: False | Fast: False
+2026-09-10 02:32:53,024 | INFO     | MainPipeline |   Seeds: 10 (ensemble: 3) | N_JOBS: 2
+2026-09-10 02:32:53,024 | INFO     | MainPipeline | ======================================================================
+2026-09-10 02:32:53,024 | INFO     | MainPipeline | STEP 1: Loading data...
+2026-09-10 02:32:53,024 | INFO     | data_loader | Loading RECS 2020 from: /home/user/building_energy_pipeline/data/recs2020_public_v7.csv
+2026-09-10 02:32:54,608 | INFO     | data_loader | RECS loaded: 18,496 rows x 799 columns
+2026-09-10 02:32:54,610 | INFO     | data_loader | Mapped YEAR_BUILT for 18,496 records
+2026-09-10 02:32:55,215 | INFO     | data_loader | Replaced 3,036,742 missing-code values with NaN
+/home/user/building_energy_pipeline/src/data_loader.py:90: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[TARGET_EUI_COL] = total / sqft
+2026-09-10 02:32:55,217 | INFO     | data_loader | EUI calculated for 18,496 records
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:32:55,218 | INFO     | data_loader |   EUI_HEATING: from TOTALBTUSPH, n=18,496 (mean=20.15)
+2026-09-10 02:32:55,219 | INFO     | data_loader |   SHARE_HEATING: mean=0.385
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:32:55,220 | INFO     | data_loader |   EUI_COOLING: from BTUELCOL, n=18,496 (mean=3.91)
+2026-09-10 02:32:55,220 | INFO     | data_loader |   SHARE_COOLING: mean=0.095
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:32:55,221 | INFO     | data_loader |   EUI_DHW: from TOTALBTUWTH, n=18,496 (mean=9.42)
+2026-09-10 02:32:55,222 | INFO     | data_loader |   SHARE_DHW: mean=0.200
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:32:55,223 | INFO     | data_loader |   EUI_LIGHTING: from BTUELLGT, n=18,496 (mean=1.41)
+2026-09-10 02:32:55,223 | INFO     | data_loader |   SHARE_LIGHTING: mean=0.033
+/home/user/building_energy_pipeline/src/data_loader.py:122: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[CLIMATE_SIMPLE] = df[CLIMATE_COL].map(_simple)
+2026-09-10 02:32:55,226 | INFO     | data_loader | Added RECS climate features: HDD mean=4271.8, CDD mean=1525.5
+2026-09-10 02:32:55,226 | INFO     | data_loader | ==================================================
+2026-09-10 02:32:55,226 | INFO     | data_loader | EUI VALIDATION REPORT
+2026-09-10 02:32:55,227 | INFO     | data_loader |   Count: 18,496 | Mean: 47.59 | Median: 41.35
+2026-09-10 02:32:55,228 | INFO     | data_loader |   1st %ile: 8.88 | 99th %ile: 147.81
+2026-09-10 02:32:55,229 | INFO     | data_loader |   [PASS] Median EUI (41.35) within expected range (~42)
+2026-09-10 02:32:55,229 | INFO     | data_loader | ==================================================
+2026-09-10 02:32:55,229 | INFO     | data_loader | RECS loading complete.
+2026-09-10 02:32:55,230 | INFO     | data_loader | TMY3 metadata loaded: 153 stations
+2026-09-10 02:32:55,230 | INFO     | data_loader | Loading hourly TMY3 from: /home/user/building_energy_pipeline/data/tmy3.csv (this may take a while)...
+2026-09-10 02:32:55,688 | INFO     | data_loader | TMY3 hourly loaded: 1,340,280 rows
+2026-09-10 02:32:55,847 | INFO     | data_loader | TMY3 aggregated: 153 stations, 19 climate features
+2026-09-10 02:32:55,958 | INFO     | data_loader | TMY3 meta+hourly: 153/153 stations have hourly aggregates
+2026-09-10 02:32:56,199 | INFO     | data_loader | TMY3 merged by state. Added 21 features; matched records: 100.0%
+2026-09-10 02:32:56,200 | INFO     | data_loader |   [VALIDATION] corr(TMY3_HDD65, RECS HDD65) = 0.912 (expect > 0.5)
+2026-09-10 02:32:56,202 | INFO     | MainPipeline | STEP 1b: Loading ResStock...
+2026-09-10 02:32:56,203 | INFO     | data_loader | Loading ResStock upgrade 0 from: /home/user/building_energy_pipeline/data/upgrade0.csv.gz
+2026-09-10 02:32:56,337 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:32:56,337 | INFO     | data_loader |   Loaded: 40,000 rows x 40 columns
+2026-09-10 02:32:56,340 | INFO     | data_loader | Loading ResStock upgrade 3 from: /home/user/building_energy_pipeline/data/upgrade3.csv.gz
+2026-09-10 02:32:56,474 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:32:56,474 | INFO     | data_loader |   Loaded: 40,000 rows x 40 columns
+2026-09-10 02:32:56,477 | INFO     | data_loader | Loading ResStock upgrade 4 from: /home/user/building_energy_pipeline/data/upgrade4.csv.gz
+2026-09-10 02:32:56,642 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:32:56,642 | INFO     | data_loader |   Loaded: 40,000 rows x 40 columns
+2026-09-10 02:32:56,645 | INFO     | data_loader | Loading ResStock upgrade 10 from: /home/user/building_energy_pipeline/data/upgrade10.csv.gz
+2026-09-10 02:32:56,735 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:32:56,735 | INFO     | data_loader |   Loaded: 25,279 rows x 40 columns
+2026-09-10 02:32:56,737 | INFO     | data_loader | Loading ResStock upgrade 11 from: /home/user/building_energy_pipeline/data/upgrade11.csv.gz
+2026-09-10 02:32:56,839 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:32:56,839 | INFO     | data_loader |   Loaded: 28,177 rows x 40 columns
+2026-09-10 02:32:56,842 | INFO     | data_loader | Loading ResStock upgrade 15 from: /home/user/building_energy_pipeline/data/upgrade15.csv.gz
+2026-09-10 02:32:56,948 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:32:56,948 | INFO     | data_loader |   Loaded: 29,891 rows x 40 columns
+2026-09-10 02:32:56,951 | INFO     | data_loader | ResStock loading complete: 6/6 files loaded
+2026-09-10 02:32:56,952 | INFO     | MainPipeline | STEP 2: Computing physics-informed features...
+2026-09-10 02:32:57,233 | INFO     | physics_features | Computing physics-informed features v8.0...
+2026-09-10 02:32:57,265 | INFO     | physics_features |   PH_eui_estimate vs EUI correlation: 0.2258
+2026-09-10 02:32:57,265 | INFO     | physics_features |   Physics features created: 47
+2026-09-10 02:32:57,266 | INFO     | physics_features |     PH_building_height: mean=14.2323, valid=18,496
+2026-09-10 02:32:57,266 | INFO     | physics_features |     PH_footprint_area: mean=1393.5534, valid=18,496
+2026-09-10 02:32:57,266 | INFO     | physics_features |     PH_building_perimeter: mean=142.0929, valid=18,496
+2026-09-10 02:32:57,266 | INFO     | physics_features |     PH_wall_area: mean=1904.5602, valid=18,496
+2026-09-10 02:32:57,266 | INFO     | physics_features |     PH_roof_area: mean=1393.5534, valid=18,496
+2026-09-10 02:32:57,267 | INFO     | physics_features |     PH_building_volume: mean=17639.7178, valid=18,496
+2026-09-10 02:32:57,267 | INFO     | physics_features |     PH_surface_area: mean=4691.6670, valid=18,496
+2026-09-10 02:32:57,267 | INFO     | physics_features |     PH_surface_volume_ratio: mean=0.2865, valid=18,496
+2026-09-10 02:32:57,267 | INFO     | physics_features |     PH_surface_factor: mean=2.5783, valid=18,496
+2026-09-10 02:32:57,267 | INFO     | physics_features |     PH_log_sqft: mean=7.4200, valid=18,496
+2026-09-10 02:32:58,154 | INFO     | eda | EDA done: EUI mean=47.6, n=18,496
+2026-09-10 02:32:58,155 | INFO     | MainPipeline | STEP 3: Four-way split (before any fitted preprocessing)...
+2026-09-10 02:32:58,273 | INFO     | preprocessing | Split (stratified by BA_climate_SIMPLE): train=12,947 | val=1,850 | calib=925 | test=2,774
+2026-09-10 02:32:58,273 | INFO     | preprocessing |   Roles: val=model selection (early stopping/routing/Optuna); calib=UNTOUCHED conformal calibration; test=reporting only.
+2026-09-10 02:32:58,275 | INFO     | MainPipeline | STEP 4: Feature engineering (fit on train only)...
+2026-09-10 02:32:58,293 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:32:58,293 | INFO     | feature_engineering | FEATURE ENGINEERING v8.0 (fit on train only)
+2026-09-10 02:32:58,293 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:32:58,440 | INFO     | feature_engineering | Categorical: 556, Numeric: 144
+2026-09-10 02:32:59,712 | INFO     | feature_engineering | Ordinal encoder fitted on 556 categorical columns (train only)
+2026-09-10 02:33:03,505 | INFO     | MainPipeline | Final feature matrix: 12,947 x 700
+2026-09-10 02:33:03,505 | INFO     | MainPipeline |   Survey weights enabled (NWEIGHT, normalized). Train sum=12,947
+2026-09-10 02:33:03,505 | INFO     | MainPipeline | STEP 5: Feature selection (train only)...
+2026-09-10 02:33:03,632 | INFO     | feature_selection | Dropped 9 all-NaN/constant columns before selection
+2026-09-10 02:33:35,074 | INFO     | feature_selection | Selected 250 features (physics: 43, from 691 available, train-only)
+2026-09-10 02:33:35,168 | INFO     | MainPipeline |   Feature matrix after selection: 250 features (+2 TL meta-features appended later = 252 final, when transfer learning is active)
+2026-09-10 02:33:35,168 | INFO     | MainPipeline | STEP 6: Transfer learning (ResStock teacher -> RECS meta-features)...
+2026-09-10 02:33:35,584 | INFO     | transfer_learning | Training ResStock teacher: n=36,000, features=33
+2026-09-10 02:33:38,836 | INFO     | transfer_learning |   Teacher holdout: R2(log)=0.8177, RMSE=16,042 kBtu
+2026-09-10 02:33:39,250 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.148
+2026-09-10 02:33:39,317 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.162
+2026-09-10 02:33:39,361 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.153
+2026-09-10 02:33:39,465 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.144
+2026-09-10 02:33:39,466 | INFO     | MainPipeline | STEP 7: Energy-conserving multi-task training...
+2026-09-10 02:33:39,467 | INFO     | model_training | ============================================================
+2026-09-10 02:33:39,467 | INFO     | model_training | ENERGY-CONSERVING MULTI-TASK TRAINING v8.1
+2026-09-10 02:33:39,467 | INFO     | model_training |   Primary: log1p(TOTALBTU) | Shares: ['heating', 'cooling', 'dhw', 'lighting'] | Features: 252 | Samples: 12,947
+2026-09-10 02:33:39,467 | INFO     | model_training | ============================================================
+2026-09-10 02:33:39,472 | INFO     | model_training |   Training primary total-energy model...
+2026-09-10 02:33:46,446 | INFO     | model_training |     Early stopping at iteration 444
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:33:55,897 | INFO     | model_training |     Share model 'heating': n=12,947, mean share=0.385
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:34:03,577 | INFO     | model_training |     Share model 'cooling': n=12,947, mean share=0.095
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:34:12,608 | INFO     | model_training |     Share model 'dhw': n=12,947, mean share=0.200
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:34:17,460 | INFO     | model_training |     Share model 'lighting': n=12,947, mean share=0.033
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:34:24,328 | INFO     | model_training |     Routing 'heating': share R2=0.7024 vs direct R2=0.7069 -> DIRECT
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:34:30,245 | INFO     | model_training |     Routing 'cooling': share R2=0.6262 vs direct R2=0.6322 -> DIRECT
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:34:34,827 | INFO     | model_training |     Routing 'dhw': share R2=0.6589 vs direct R2=0.6729 -> DIRECT
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:34:38,038 | INFO     | model_training |     Routing 'lighting': share R2=0.3960 vs direct R2=0.3514 -> SHARE
+2026-09-10 02:34:46,775 | INFO     | model_training |     Ablation baseline (direct EUI) trained.
+2026-09-10 02:35:55,280 | INFO     | model_training |     Conformal [calib-split, n=925, untouched]: q_hat=0.5149 (90% interval, log-space)
+2026-09-10 02:35:55,281 | INFO     | MainPipeline |   Ablation: re-training primary model WITHOUT TL meta-features under the IDENTICAL fitted protocol (fixed params)...
+2026-09-10 02:35:55,285 | INFO     | model_training | ============================================================
+2026-09-10 02:35:55,285 | INFO     | model_training | ENERGY-CONSERVING MULTI-TASK TRAINING v8.1
+2026-09-10 02:35:55,285 | INFO     | model_training |   Primary: log1p(TOTALBTU) | Shares: ['heating', 'cooling', 'dhw', 'lighting'] | Features: 250 | Samples: 12,947
+2026-09-10 02:35:55,285 | INFO     | model_training |   Fixed hyper-parameters supplied (36 keys) - Optuna skipped (paired-ablation protocol).
+2026-09-10 02:35:55,285 | INFO     | model_training | ============================================================
+2026-09-10 02:35:55,290 | INFO     | model_training |   Training primary total-energy model...
+2026-09-10 02:36:01,309 | INFO     | model_training |     Early stopping at iteration 433
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:36:10,615 | INFO     | model_training |     Share model 'heating': n=12,947, mean share=0.385
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:36:17,391 | INFO     | model_training |     Share model 'cooling': n=12,947, mean share=0.095
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:36:22,900 | INFO     | model_training |     Share model 'dhw': n=12,947, mean share=0.200
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:36:25,605 | INFO     | model_training |     Share model 'lighting': n=12,947, mean share=0.033
+2026-09-10 02:39:18,109 | INFO     | model_training |     Conformal [cross-conformal OOF, n=12,947]: q_hat=0.5103
+2026-09-10 02:39:18,453 | INFO     | MainPipeline |   Ablation (no TL, identical protocol): test R2=0.6364
+2026-09-10 02:39:18,453 | INFO     | MainPipeline | STEP 7.5: Multi-seed repetition (headline comparison CIs)...
+2026-09-10 02:39:18,456 | INFO     | seed_repeat | ============================================================
+2026-09-10 02:39:18,456 | INFO     | seed_repeat | MULTI-SEED REPETITION v8.1 — 10 seeds [42, 101, 202]... (TL arms included)
+2026-09-10 02:39:18,456 | INFO     | seed_repeat | ============================================================
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:39:34,466 | INFO     | seed_repeat |   seed 42: xgb_noTL=0.6441  xgb_TL=0.6432  lgb_noTL=0.6392  lgb_TL=0.6421
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:39:49,652 | INFO     | seed_repeat |   seed 101: xgb_noTL=0.6401  xgb_TL=0.6459  lgb_noTL=0.6401  lgb_TL=0.6468
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:40:06,830 | INFO     | seed_repeat |   seed 202: xgb_noTL=0.6397  xgb_TL=0.6427  lgb_noTL=0.6420  lgb_TL=0.6389
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:40:21,361 | INFO     | seed_repeat |   seed 303: xgb_noTL=0.6503  xgb_TL=0.6381  lgb_noTL=0.6405  lgb_TL=0.6382
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:40:37,891 | INFO     | seed_repeat |   seed 404: xgb_noTL=0.6416  xgb_TL=0.6431  lgb_noTL=0.6417  lgb_TL=0.6429
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:40:55,197 | INFO     | seed_repeat |   seed 505: xgb_noTL=0.6449  xgb_TL=0.6488  lgb_noTL=0.6392  lgb_TL=0.6373
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:41:11,830 | INFO     | seed_repeat |   seed 606: xgb_noTL=0.6486  xgb_TL=0.6421  lgb_noTL=0.6394  lgb_TL=0.6380
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:41:27,297 | INFO     | seed_repeat |   seed 707: xgb_noTL=0.6413  xgb_TL=0.6428  lgb_noTL=0.6403  lgb_TL=0.6407
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:41:40,877 | INFO     | seed_repeat |   seed 808: xgb_noTL=0.6415  xgb_TL=0.6438  lgb_noTL=0.6374  lgb_TL=0.6365
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:41:56,213 | INFO     | seed_repeat |   seed 909: xgb_noTL=0.6450  xgb_TL=0.6395  lgb_noTL=0.6360  lgb_TL=0.6416
+2026-09-10 02:41:56,950 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:41:56,951 | INFO     | ensemble_models | HONEST STACKING ENSEMBLE v8.0 — target: log1p(TOTALBTU)
+2026-09-10 02:41:56,951 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:41:56,951 | INFO     | ensemble_models | Base learners (fixed order): ['xgb', 'lgb', 'catboost']
+2026-09-10 02:42:35,530 | INFO     | ensemble_models |   OOF R2 xgb       : 0.7556
+2026-09-10 02:43:10,753 | INFO     | ensemble_models |   OOF R2 lgb       : 0.7569
+2026-09-10 02:44:02,646 | INFO     | ensemble_models |   OOF R2 catboost  : 0.7589
+2026-09-10 02:44:02,647 | INFO     | ensemble_models | OOF meta-features shape: (12947, 3)
+2026-09-10 02:44:02,850 | INFO     | ensemble_models |   Meta-learner coefficients (non-negative): {'xgb': 0.09305513905064229, 'lgb': 0.18797057172651427, 'catboost': 0.3085714553263562}
+2026-09-10 02:44:02,851 | INFO     | ensemble_models |   Sum of coefficients: 0.5896 (1.0 = convex combination)
+2026-09-10 02:44:02,851 | INFO     | ensemble_models |   OOF stacked R2: 0.7628 (best base OOF: 0.7589)
+2026-09-10 02:44:02,851 | INFO     | ensemble_models | Retraining base models on 100% of train...
+2026-09-10 02:44:28,664 | INFO     | ensemble_models |   Validation (true holdout): R2(log)=0.7696
+2026-09-10 02:44:28,782 | INFO     | seed_repeat |   seed 42: ensemble=0.6541
+2026-09-10 02:44:28,784 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:44:28,784 | INFO     | ensemble_models | HONEST STACKING ENSEMBLE v8.0 — target: log1p(TOTALBTU)
+2026-09-10 02:44:28,784 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:44:28,784 | INFO     | ensemble_models | Base learners (fixed order): ['xgb', 'lgb', 'catboost']
+2026-09-10 02:45:08,383 | INFO     | ensemble_models |   OOF R2 xgb       : 0.7549
+2026-09-10 02:45:44,074 | INFO     | ensemble_models |   OOF R2 lgb       : 0.7556
+2026-09-10 02:46:36,366 | INFO     | ensemble_models |   OOF R2 catboost  : 0.7579
+2026-09-10 02:46:36,367 | INFO     | ensemble_models | OOF meta-features shape: (12947, 3)
+2026-09-10 02:46:36,478 | INFO     | ensemble_models |   Meta-learner coefficients (non-negative): {'xgb': 0.11255389877263867, 'lgb': 0.17346950699575683, 'catboost': 0.3030487726393403}
+2026-09-10 02:46:36,485 | INFO     | ensemble_models |   Sum of coefficients: 0.5891 (1.0 = convex combination)
+2026-09-10 02:46:36,485 | INFO     | ensemble_models |   OOF stacked R2: 0.7618 (best base OOF: 0.7579)
+2026-09-10 02:46:36,485 | INFO     | ensemble_models | Retraining base models on 100% of train...
+2026-09-10 02:47:03,564 | INFO     | ensemble_models |   Validation (true holdout): R2(log)=0.7718
+2026-09-10 02:47:03,722 | INFO     | seed_repeat |   seed 101: ensemble=0.6542
+2026-09-10 02:47:03,724 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:47:03,724 | INFO     | ensemble_models | HONEST STACKING ENSEMBLE v8.0 — target: log1p(TOTALBTU)
+2026-09-10 02:47:03,724 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:47:03,724 | INFO     | ensemble_models | Base learners (fixed order): ['xgb', 'lgb', 'catboost']
+2026-09-10 02:47:42,141 | INFO     | ensemble_models |   OOF R2 xgb       : 0.7581
+2026-09-10 02:48:18,784 | INFO     | ensemble_models |   OOF R2 lgb       : 0.7579
+2026-09-10 02:49:10,875 | INFO     | ensemble_models |   OOF R2 catboost  : 0.7597
+2026-09-10 02:49:10,876 | INFO     | ensemble_models | OOF meta-features shape: (12947, 3)
+2026-09-10 02:49:11,002 | INFO     | ensemble_models |   Meta-learner coefficients (non-negative): {'xgb': 0.15002129566653227, 'lgb': 0.17488675878872886, 'catboost': 0.26543616429898154}
+2026-09-10 02:49:11,002 | INFO     | ensemble_models |   Sum of coefficients: 0.5903 (1.0 = convex combination)
+2026-09-10 02:49:11,003 | INFO     | ensemble_models |   OOF stacked R2: 0.7641 (best base OOF: 0.7597)
+2026-09-10 02:49:11,003 | INFO     | ensemble_models | Retraining base models on 100% of train...
+2026-09-10 02:49:36,108 | INFO     | ensemble_models |   Validation (true holdout): R2(log)=0.7701
+2026-09-10 02:49:36,233 | INFO     | seed_repeat |   seed 202: ensemble=0.6552
+2026-09-10 02:49:36,263 | INFO     | seed_repeat | ------------------------------------------------------------
+2026-09-10 02:49:36,263 | INFO     | seed_repeat |   tl_effect_xgb     : -0.07 pp [-0.47, +0.33] sign 6/10 -> within_noise
+2026-09-10 02:49:36,263 | INFO     | seed_repeat |   tl_effect_lgb     : +0.07 pp [-0.17, +0.31] sign 5/10 -> within_noise
+2026-09-10 02:49:36,263 | INFO     | seed_repeat |   stacking_effect   : +1.00 pp [+0.36, +1.64] sign 3/3 -> consistent_gain
+2026-09-10 02:49:36,275 | INFO     | MainPipeline | STEP 8: Honest stacking ensemble...
+2026-09-10 02:49:36,276 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:49:36,276 | INFO     | ensemble_models | HONEST STACKING ENSEMBLE v8.0 — target: log1p(TOTALBTU)
+2026-09-10 02:49:36,276 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:49:36,276 | INFO     | ensemble_models | Base learners (fixed order): ['xgb', 'lgb', 'catboost']
+2026-09-10 02:50:14,936 | INFO     | ensemble_models |   OOF R2 xgb       : 0.7556
+2026-09-10 02:50:50,029 | INFO     | ensemble_models |   OOF R2 lgb       : 0.7569
+2026-09-10 02:51:42,461 | INFO     | ensemble_models |   OOF R2 catboost  : 0.7589
+2026-09-10 02:51:42,462 | INFO     | ensemble_models | OOF meta-features shape: (12947, 3)
+2026-09-10 02:51:42,606 | INFO     | ensemble_models |   Meta-learner coefficients (non-negative): {'xgb': 0.09305513905064229, 'lgb': 0.18797057172651427, 'catboost': 0.3085714553263562}
+2026-09-10 02:51:42,606 | INFO     | ensemble_models |   Sum of coefficients: 0.5896 (1.0 = convex combination)
+2026-09-10 02:51:42,606 | INFO     | ensemble_models |   OOF stacked R2: 0.7628 (best base OOF: 0.7589)
+2026-09-10 02:51:42,606 | INFO     | ensemble_models | Retraining base models on 100% of train...
+2026-09-10 02:52:09,369 | INFO     | ensemble_models |   Validation (true holdout): R2(log)=0.7696
+2026-09-10 02:52:09,369 | INFO     | MainPipeline |   Ensemble trained: ['xgb', 'lgb', 'catboost']
+2026-09-10 02:52:09,369 | INFO     | MainPipeline | STEP 9: Evaluation on held-out TEST set...
+2026-09-10 02:52:10,226 | INFO     | MainPipeline |   total_btu   : R2=0.6397 RMSE=33,409 kBtu cov90=0.903 R2w=0.6711
+2026-09-10 02:52:10,226 | INFO     | MainPipeline |   conformal calibration: mode=calib-split (n_calib=925); test coverage curve: 80%->79.5%, 90%->90.3%, 95%->96.2%
+2026-09-10 02:52:10,226 | INFO     | MainPipeline |   population calibration error: -6.01%
+2026-09-10 02:52:10,227 | INFO     | MainPipeline |   eui derived : R2=0.6541 RMSE=17.63 kBtu/sqft
+2026-09-10 02:52:10,228 | INFO     | MainPipeline |   eui direct  : R2=0.6603  (ablation, v7-style)
+2026-09-10 02:52:10,229 | INFO     | MainPipeline |   eui_heating : R2=0.7102 RMSE=10.69
+2026-09-10 02:52:10,229 | INFO     | MainPipeline |   eui_cooling : R2=0.5931 RMSE=2.74
+2026-09-10 02:52:10,230 | INFO     | MainPipeline |   eui_dhw     : R2=0.6036 RMSE=5.37
+2026-09-10 02:52:10,231 | INFO     | MainPipeline |   eui_lighting: R2=0.3945 RMSE=1.31
+2026-09-10 02:52:10,358 | INFO     | MainPipeline |   ensemble    : R2=0.6541 RMSE=32,733 kBtu
+2026-09-10 02:52:11,133 | INFO     | publication_outputs | Prediction figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/pred_vs_actual_total_btu_test.pdf
+2026-09-10 02:52:11,913 | INFO     | publication_outputs | Prediction figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/pred_vs_actual_ensemble_test.pdf
+2026-09-10 02:52:12,237 | INFO     | publication_outputs | Coverage figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/coverage_conformal.pdf
+2026-09-10 02:52:12,526 | INFO     | publication_outputs | Architecture schematic saved (vector): /home/user/building_energy_pipeline/outputs/figures/architecture.pdf
+2026-09-10 02:52:17,241 | INFO     | shap_analysis | Top-10 features (shap, single run): ['FUELHEAT', 'TL_pred_logbtu', 'TYPEHUQ', 'FUELH2O', 'PH_vintage_x_HDD', 'PH_occ_x_sqft', 'TEMPHOME', 'SQFTEST', 'PH_base_load', 'PH_window_wall_ratio']
+2026-09-10 02:52:17,482 | INFO     | shap_analysis | SHAP figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/feature_importance_total.pdf
+2026-09-10 02:52:17,482 | INFO     | MainPipeline | ============================================================
+2026-09-10 02:52:17,482 | INFO     | MainPipeline | FINAL RESULTS (test set)
+2026-09-10 02:52:17,482 | INFO     | MainPipeline | ============================================================
+2026-09-10 02:52:17,482 | INFO     | MainPipeline |   total_btu (primary)             : R2=0.6397 (target 0.85) [BELOW TARGET]
+2026-09-10 02:52:17,482 | INFO     | MainPipeline |   eui (derived)                   : R2=0.6541 (target 0.7) [BELOW TARGET]
+2026-09-10 02:52:17,482 | INFO     | MainPipeline |   eui_heating                     : R2=0.7102 (target 0.7) [PASS]
+2026-09-10 02:52:17,482 | INFO     | MainPipeline |   eui_cooling                     : R2=0.5931 (target 0.7) [BELOW TARGET]
+2026-09-10 02:52:17,482 | INFO     | MainPipeline |   eui_dhw                         : R2=0.6036 (target 0.7) [BELOW TARGET]
+2026-09-10 02:52:17,482 | INFO     | MainPipeline |   eui_lighting                    : R2=0.3945 (target 0.7) [BELOW TARGET]
+2026-09-10 02:52:17,482 | INFO     | MainPipeline |   total_btu (stacked ensemble)    : R2=0.6541 (target 0.85) [BELOW TARGET]
+2026-09-10 02:52:17,483 | INFO     | MainPipeline | STEP 10: Leave-one-climate-out generalization (honest refit)...
+2026-09-10 02:52:17,484 | INFO     | climate_validation | LOGO protocol: FE + selection refit from scratch per fold.
+2026-09-10 02:52:17,612 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:52:17,613 | INFO     | feature_engineering | FEATURE ENGINEERING v8.0 (fit on train only)
+2026-09-10 02:52:17,613 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:52:18,106 | INFO     | feature_engineering | Categorical: 556, Numeric: 144
+2026-09-10 02:52:19,185 | INFO     | feature_engineering | Ordinal encoder fitted on 556 categorical columns (train only)
+2026-09-10 02:52:23,465 | INFO     | feature_selection | Dropped 9 all-NaN/constant columns before selection
+FULL_EXIT=137

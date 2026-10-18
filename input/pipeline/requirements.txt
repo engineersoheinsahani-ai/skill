@@ -1,0 +1,15 @@
+# Building Energy Forecasting Pipeline v8.1
+# Python 3.10+ (developed on 3.13)
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+xgboost>=2.0
+lightgbm>=4.1
+catboost>=1.2
+matplotlib>=3.8
+joblib>=1.3
+optuna>=3.4
+shap>=0.45
+pytest>=7.4
+tqdm>=4.66
+graphviz>=0.20

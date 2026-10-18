@@ -1,0 +1,50 @@
+
+digraph pipeline {
+    rankdir=TB;
+    bgcolor="white";
+    fontname="Helvetica";
+    labelloc="t";
+    nodesep=0.40;
+    ranksep=0.50;
+    splines=ortho;
+    compound=true;
+
+    node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10.5,
+          color="#5f6368", penwidth=0.9, margin="0.16,0.08"];
+    edge [color="#5f6368", penwidth=1.0, arrowsize=0.6, fontname="Helvetica", fontsize=8.5];
+
+    subgraph cluster_data {
+        label="Data sources"; fontsize=10; fontcolor="#333333"; style="dashed";
+        color="#9aa0a6"; margin=14;
+        recs    [label="RECS 2020 microdata\n18,496 households\ntarget: TOTALBTU", fillcolor="#DBE9F6"];
+        tmy     [label="TMY3 weather\nHDD / CDD physics\nfeatures", fillcolor="#DBE9F6"];
+        resstock[label="ResStock stock model\n494,974 households\n(teacher corpus)", fillcolor="#FDEEDA"];
+    }
+
+    clean   [label="Cleaning + deterministic\nleakage audit (9 rules + 2 probes)", fillcolor="#EEF2F7"];
+    routing [label="End-use target routing\nheating: SHARE    cooling: DIRECT\nDHW: DIRECT    lighting: SHARE", fillcolor="#EEF2F7"];
+    split   [label="Fixed split\ntrain 12,947 | val 1,850\ncalib 925 | test 2,774", fillcolor="#EEF2F7"];
+    teacher [label="Teacher ensemble\nR²(log) = 0.737\nmeta-feature: TL_pred_logbtu",
+             style="rounded,filled,dashed", fillcolor="#FDEEDA"];
+    base    [label="Base learners\nRandomForest | XGBoost\nLightGBM | CatBoost", fillcolor="#E7F0FA"];
+    stack   [label="Stacking meta-learner\n+0.84 pp over best base\n[+0.49, +1.19]", fillcolor="#E7F0FA"];
+    conform [label="Split conformal calibration\n90% nominal level", fillcolor="#E3F2E7"];
+
+    audit   [label="Leakage audit\nPASS (9+2)", fillcolor="#FFF6DE"];
+    logo    [label="LOGO climate validation\nmean R²(log) = 0.698\nCold 0.72 | Hot 0.65 | Mixed 0.73", fillcolor="#FFF6DE"];
+    cf      [label="Policy counterfactuals\nResStock-benchmarked\nnaive sign-flip detected", fillcolor="#FFF6DE"];
+
+    recs -> clean;
+    clean -> routing -> split;
+    tmy -> split [label="physics features"];
+    resstock -> teacher [style=dashed, color="#B08900"];
+    teacher -> stack [style=dashed, color="#B08900", label="meta-feature"];
+    split -> base [label="train / val"];
+    base -> stack;
+    stack -> conform [label="calib set"];
+    conform -> audit [dir=none, style=dotted];
+    conform -> logo [dir=none, style=dotted];
+    conform -> cf [dir=none, style=dotted];
+
+    { rank=same; audit; logo; cf; }
+}

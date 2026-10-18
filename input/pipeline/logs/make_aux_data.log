@@ -1,0 +1,9 @@
+TMY3: 153 stations, 1,340,280 hourly rows -> tmy3.csv + TMY3_StationsMeta.csv
+Traceback (most recent call last):
+  File "/home/user/building_energy_pipeline/tools/make_aux_data.py", line 388, in <module>
+    build_resstock(a.n_resstock)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/user/building_energy_pipeline/tools/make_aux_data.py", line 229, in build_resstock
+    zone = rng.choice(BA_ZONES, n, p=BA_ZONE_W)
+  File "numpy/random/_generator.pyx", line 894, in numpy.random._generator.Generator.choice
+ValueError: Probabilities do not sum to 1. See Notes section of docstring for more information.

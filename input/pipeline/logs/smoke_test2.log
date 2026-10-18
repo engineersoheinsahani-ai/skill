@@ -1,0 +1,307 @@
+2026-09-10 02:26:02,115 | INFO     | MainPipeline | ======================================================================
+2026-09-10 02:26:02,115 | INFO     | MainPipeline |   PHYSICS-INFORMED ENERGY-CONSERVING PIPELINE v8.1
+2026-09-10 02:26:02,115 | INFO     | MainPipeline |   Target: Energy and Buildings (Q1, IF=8.0)
+2026-09-10 02:26:02,115 | INFO     | MainPipeline | ======================================================================
+2026-09-10 02:26:02,115 | INFO     | MainPipeline |   RECS nrows: 4000 | Max features: 250
+2026-09-10 02:26:02,115 | INFO     | MainPipeline |   ResStock upgrades: [0, 3, 4, 10, 11, 15] | Transfer: True
+2026-09-10 02:26:02,115 | INFO     | MainPipeline |   Weights: True | Optimize: False | Fast: True
+2026-09-10 02:26:02,116 | INFO     | MainPipeline |   Seeds: 3 (ensemble: 2) | N_JOBS: 2
+2026-09-10 02:26:02,116 | INFO     | MainPipeline | ======================================================================
+2026-09-10 02:26:02,116 | INFO     | MainPipeline | STEP 1: Loading data...
+2026-09-10 02:26:02,116 | INFO     | data_loader | Loading RECS 2020 from: /home/user/building_energy_pipeline/data/recs2020_public_v7.csv
+2026-09-10 02:26:02,333 | INFO     | data_loader | RECS loaded: 4,000 rows x 799 columns
+2026-09-10 02:26:02,335 | INFO     | data_loader | Mapped YEAR_BUILT for 4,000 records
+2026-09-10 02:26:02,559 | INFO     | data_loader | Replaced 659,405 missing-code values with NaN
+/home/user/building_energy_pipeline/src/data_loader.py:90: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[TARGET_EUI_COL] = total / sqft
+2026-09-10 02:26:02,560 | INFO     | data_loader | EUI calculated for 4,000 records
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:26:02,562 | INFO     | data_loader |   EUI_HEATING: from TOTALBTUSPH, n=4,000 (mean=19.95)
+2026-09-10 02:26:02,562 | INFO     | data_loader |   SHARE_HEATING: mean=0.381
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:26:02,563 | INFO     | data_loader |   EUI_COOLING: from BTUELCOL, n=4,000 (mean=3.95)
+2026-09-10 02:26:02,563 | INFO     | data_loader |   SHARE_COOLING: mean=0.095
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:26:02,564 | INFO     | data_loader |   EUI_DHW: from TOTALBTUWTH, n=4,000 (mean=9.52)
+2026-09-10 02:26:02,564 | INFO     | data_loader |   SHARE_DHW: mean=0.202
+/home/user/building_energy_pipeline/src/data_loader.py:97: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[eui_col] = btu / sqft
+/home/user/building_energy_pipeline/src/data_loader.py:98: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[share_col] = (btu / total).where(total > 0)
+2026-09-10 02:26:02,566 | INFO     | data_loader |   EUI_LIGHTING: from BTUELLGT, n=4,000 (mean=1.49)
+2026-09-10 02:26:02,566 | INFO     | data_loader |   SHARE_LIGHTING: mean=0.035
+/home/user/building_energy_pipeline/src/data_loader.py:122: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  df[CLIMATE_SIMPLE] = df[CLIMATE_COL].map(_simple)
+2026-09-10 02:26:02,567 | INFO     | data_loader | Added RECS climate features: HDD mean=4269.1, CDD mean=1520.6
+2026-09-10 02:26:02,567 | INFO     | data_loader | ==================================================
+2026-09-10 02:26:02,567 | INFO     | data_loader | EUI VALIDATION REPORT
+2026-09-10 02:26:02,567 | INFO     | data_loader |   Count: 4,000 | Mean: 47.79 | Median: 40.94
+2026-09-10 02:26:02,568 | INFO     | data_loader |   1st %ile: 8.83 | 99th %ile: 158.34
+2026-09-10 02:26:02,568 | INFO     | data_loader |   [PASS] Median EUI (40.94) within expected range (~42)
+2026-09-10 02:26:02,568 | INFO     | data_loader | ==================================================
+2026-09-10 02:26:02,568 | INFO     | data_loader | RECS loading complete.
+2026-09-10 02:26:02,570 | INFO     | data_loader | TMY3 metadata loaded: 153 stations
+2026-09-10 02:26:02,570 | INFO     | data_loader | Loading hourly TMY3 from: /home/user/building_energy_pipeline/data/tmy3.csv (this may take a while)...
+2026-09-10 02:26:03,085 | INFO     | data_loader | TMY3 hourly loaded: 1,340,280 rows
+2026-09-10 02:26:03,255 | INFO     | data_loader | TMY3 aggregated: 153 stations, 19 climate features
+2026-09-10 02:26:03,283 | INFO     | data_loader | TMY3 meta+hourly: 153/153 stations have hourly aggregates
+2026-09-10 02:26:03,530 | INFO     | data_loader | TMY3 merged by state. Added 21 features; matched records: 100.0%
+2026-09-10 02:26:03,531 | INFO     | data_loader |   [VALIDATION] corr(TMY3_HDD65, RECS HDD65) = 0.909 (expect > 0.5)
+2026-09-10 02:26:03,532 | INFO     | MainPipeline | STEP 1b: Loading ResStock...
+2026-09-10 02:26:03,532 | INFO     | data_loader | Loading ResStock upgrade 0 from: /home/user/building_energy_pipeline/data/upgrade0.csv.gz
+2026-09-10 02:26:03,716 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:26:03,716 | INFO     | data_loader |   Loaded: 6,000 rows x 40 columns
+2026-09-10 02:26:03,717 | INFO     | data_loader | Loading ResStock upgrade 3 from: /home/user/building_energy_pipeline/data/upgrade3.csv.gz
+2026-09-10 02:26:03,896 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:26:03,897 | INFO     | data_loader |   Loaded: 6,000 rows x 40 columns
+2026-09-10 02:26:03,897 | INFO     | data_loader | Loading ResStock upgrade 4 from: /home/user/building_energy_pipeline/data/upgrade4.csv.gz
+2026-09-10 02:26:04,064 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:26:04,064 | INFO     | data_loader |   Loaded: 6,000 rows x 40 columns
+2026-09-10 02:26:04,064 | INFO     | data_loader | Loading ResStock upgrade 10 from: /home/user/building_energy_pipeline/data/upgrade10.csv.gz
+2026-09-10 02:26:04,161 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:26:04,161 | INFO     | data_loader |   Loaded: 6,000 rows x 40 columns
+2026-09-10 02:26:04,162 | INFO     | data_loader | Loading ResStock upgrade 11 from: /home/user/building_energy_pipeline/data/upgrade11.csv.gz
+2026-09-10 02:26:04,267 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:26:04,267 | INFO     | data_loader |   Loaded: 6,000 rows x 40 columns
+2026-09-10 02:26:04,268 | INFO     | data_loader | Loading ResStock upgrade 15 from: /home/user/building_energy_pipeline/data/upgrade15.csv.gz
+2026-09-10 02:26:04,387 | INFO     | data_loader |   Retaining 40 mapped columns per chunk
+2026-09-10 02:26:04,387 | INFO     | data_loader |   Loaded: 6,000 rows x 40 columns
+2026-09-10 02:26:04,388 | INFO     | data_loader | ResStock loading complete: 6/6 files loaded
+2026-09-10 02:26:04,390 | INFO     | MainPipeline | STEP 2: Computing physics-informed features...
+2026-09-10 02:26:04,418 | INFO     | physics_features | Computing physics-informed features v8.0...
+2026-09-10 02:26:04,439 | INFO     | physics_features |   PH_eui_estimate vs EUI correlation: 0.2517
+2026-09-10 02:26:04,439 | INFO     | physics_features |   Physics features created: 47
+2026-09-10 02:26:04,439 | INFO     | physics_features |     PH_building_height: mean=14.0411, valid=4,000
+2026-09-10 02:26:04,439 | INFO     | physics_features |     PH_footprint_area: mean=1395.0407, valid=4,000
+2026-09-10 02:26:04,440 | INFO     | physics_features |     PH_building_perimeter: mean=142.1176, valid=4,000
+2026-09-10 02:26:04,440 | INFO     | physics_features |     PH_wall_area: mean=1881.3119, valid=4,000
+2026-09-10 02:26:04,440 | INFO     | physics_features |     PH_roof_area: mean=1395.0407, valid=4,000
+2026-09-10 02:26:04,440 | INFO     | physics_features |     PH_building_volume: mean=17446.7475, valid=4,000
+2026-09-10 02:26:04,440 | INFO     | physics_features |     PH_surface_area: mean=4671.3933, valid=4,000
+2026-09-10 02:26:04,440 | INFO     | physics_features |     PH_surface_volume_ratio: mean=0.2883, valid=4,000
+2026-09-10 02:26:04,440 | INFO     | physics_features |     PH_surface_factor: mean=2.5950, valid=4,000
+2026-09-10 02:26:04,441 | INFO     | physics_features |     PH_log_sqft: mean=7.4069, valid=4,000
+2026-09-10 02:26:05,334 | INFO     | eda | EDA done: EUI mean=47.8, n=4,000
+2026-09-10 02:26:05,334 | INFO     | MainPipeline | STEP 3: Four-way split (before any fitted preprocessing)...
+2026-09-10 02:26:05,360 | INFO     | preprocessing | Split (stratified by BA_climate_SIMPLE): train=2,800 | val=400 | calib=200 | test=600
+2026-09-10 02:26:05,360 | INFO     | preprocessing |   Roles: val=model selection (early stopping/routing/Optuna); calib=UNTOUCHED conformal calibration; test=reporting only.
+2026-09-10 02:26:05,362 | INFO     | MainPipeline | STEP 4: Feature engineering (fit on train only)...
+2026-09-10 02:26:05,366 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:26:05,366 | INFO     | feature_engineering | FEATURE ENGINEERING v8.0 (fit on train only)
+2026-09-10 02:26:05,366 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:26:05,405 | INFO     | feature_engineering | Categorical: 556, Numeric: 144
+2026-09-10 02:26:05,686 | INFO     | feature_engineering | Ordinal encoder fitted on 556 categorical columns (train only)
+2026-09-10 02:26:06,902 | INFO     | MainPipeline | Final feature matrix: 2,800 x 700
+2026-09-10 02:26:06,903 | INFO     | MainPipeline |   Survey weights enabled (NWEIGHT, normalized). Train sum=2,800
+2026-09-10 02:26:06,903 | INFO     | MainPipeline | STEP 5: Feature selection (train only)...
+2026-09-10 02:26:06,949 | INFO     | feature_selection | Dropped 9 all-NaN/constant columns before selection
+2026-09-10 02:26:15,869 | INFO     | feature_selection | Selected 250 features (physics: 43, from 691 available, train-only)
+2026-09-10 02:26:15,948 | INFO     | MainPipeline |   Feature matrix after selection: 250 features (+2 TL meta-features appended later = 252 final, when transfer learning is active)
+2026-09-10 02:26:15,948 | INFO     | MainPipeline | STEP 6: Transfer learning (ResStock teacher -> RECS meta-features)...
+2026-09-10 02:26:16,025 | INFO     | transfer_learning | Training ResStock teacher: n=5,400, features=32
+2026-09-10 02:26:17,935 | INFO     | transfer_learning |   Teacher holdout: R2(log)=0.7548, RMSE=18,417 kBtu
+2026-09-10 02:26:18,125 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.188
+2026-09-10 02:26:18,160 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.182
+2026-09-10 02:26:18,183 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.155
+2026-09-10 02:26:18,231 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.141
+2026-09-10 02:26:18,231 | INFO     | MainPipeline | STEP 7: Energy-conserving multi-task training...
+2026-09-10 02:26:18,232 | INFO     | model_training | ============================================================
+2026-09-10 02:26:18,232 | INFO     | model_training | ENERGY-CONSERVING MULTI-TASK TRAINING v8.1
+2026-09-10 02:26:18,232 | INFO     | model_training |   Primary: log1p(TOTALBTU) | Shares: ['heating', 'cooling', 'dhw', 'lighting'] | Features: 252 | Samples: 2,800
+2026-09-10 02:26:18,232 | INFO     | model_training | ============================================================
+2026-09-10 02:26:18,234 | INFO     | model_training |   Training primary total-energy model...
+2026-09-10 02:26:22,935 | INFO     | model_training |     Early stopping at iteration 388
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:26,003 | INFO     | model_training |     Share model 'heating': n=2,800, mean share=0.381
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:28,592 | INFO     | model_training |     Share model 'cooling': n=2,800, mean share=0.096
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:30,443 | INFO     | model_training |     Share model 'dhw': n=2,800, mean share=0.202
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:32,046 | INFO     | model_training |     Share model 'lighting': n=2,800, mean share=0.034
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:33,825 | INFO     | model_training |     Routing 'heating': share R2=0.7324 vs direct R2=0.7194 -> SHARE
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:35,639 | INFO     | model_training |     Routing 'cooling': share R2=0.5627 vs direct R2=0.5487 -> SHARE
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:37,126 | INFO     | model_training |     Routing 'dhw': share R2=0.6894 vs direct R2=0.6798 -> SHARE
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:26:38,357 | INFO     | model_training |     Routing 'lighting': share R2=0.2021 vs direct R2=0.3892 -> DIRECT
+2026-09-10 02:26:42,996 | INFO     | model_training |     Ablation baseline (direct EUI) trained.
+2026-09-10 02:27:31,025 | INFO     | model_training |     Conformal [calib-split, n=200, untouched]: q_hat=0.5010 (90% interval, log-space)
+2026-09-10 02:27:31,026 | INFO     | MainPipeline |   [FAST mode] smoke-test capacity
+2026-09-10 02:27:31,026 | INFO     | MainPipeline |   Ablation: re-training primary model WITHOUT TL meta-features under the IDENTICAL fitted protocol (fixed params)...
+2026-09-10 02:27:31,028 | INFO     | model_training | ============================================================
+2026-09-10 02:27:31,028 | INFO     | model_training | ENERGY-CONSERVING MULTI-TASK TRAINING v8.1
+2026-09-10 02:27:31,028 | INFO     | model_training |   Primary: log1p(TOTALBTU) | Shares: ['heating', 'cooling', 'dhw', 'lighting'] | Features: 250 | Samples: 2,800
+2026-09-10 02:27:31,028 | INFO     | model_training |   Fixed hyper-parameters supplied (36 keys) - Optuna skipped (paired-ablation protocol).
+2026-09-10 02:27:31,028 | INFO     | model_training | ============================================================
+2026-09-10 02:27:31,030 | INFO     | model_training |   Training primary total-energy model...
+2026-09-10 02:27:34,745 | INFO     | model_training |     Early stopping at iteration 382
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:27:38,820 | INFO     | model_training |     Share model 'heating': n=2,800, mean share=0.381
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:27:41,271 | INFO     | model_training |     Share model 'cooling': n=2,800, mean share=0.096
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:27:43,997 | INFO     | model_training |     Share model 'dhw': n=2,800, mean share=0.202
+/usr/local/lib/python3.13/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+2026-09-10 02:27:46,039 | INFO     | model_training |     Share model 'lighting': n=2,800, mean share=0.034
+2026-09-10 02:29:34,735 | INFO     | model_training |     Conformal [cross-conformal OOF, n=2,800]: q_hat=0.5569
+2026-09-10 02:29:34,793 | INFO     | MainPipeline |   Ablation (no TL, identical protocol): test R2=0.5991
+2026-09-10 02:29:34,793 | INFO     | MainPipeline | STEP 8: Honest stacking ensemble...
+2026-09-10 02:29:34,986 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:29:34,986 | INFO     | ensemble_models | HONEST STACKING ENSEMBLE v8.0 — target: log1p(TOTALBTU)
+2026-09-10 02:29:34,986 | INFO     | ensemble_models | ============================================================
+2026-09-10 02:29:34,986 | INFO     | ensemble_models | Base learners (fixed order): ['xgb', 'lgb', 'catboost']
+2026-09-10 02:29:49,409 | INFO     | ensemble_models |   OOF R2 xgb       : 0.7289
+2026-09-10 02:30:00,168 | INFO     | ensemble_models |   OOF R2 lgb       : 0.7218
+2026-09-10 02:30:25,569 | INFO     | ensemble_models |   OOF R2 catboost  : 0.7368
+2026-09-10 02:30:25,570 | INFO     | ensemble_models | OOF meta-features shape: (2800, 3)
+2026-09-10 02:30:25,585 | INFO     | ensemble_models |   Meta-learner coefficients (non-negative): {'xgb': 0.13614390566832815, 'lgb': 0.03848588035416736, 'catboost': 0.3987331787608545}
+2026-09-10 02:30:25,585 | INFO     | ensemble_models |   Sum of coefficients: 0.5734 (1.0 = convex combination)
+2026-09-10 02:30:25,585 | INFO     | ensemble_models |   OOF stacked R2: 0.7399 (best base OOF: 0.7368)
+2026-09-10 02:30:25,585 | INFO     | ensemble_models | Retraining base models on 100% of train...
+2026-09-10 02:30:43,390 | INFO     | ensemble_models |   Validation (true holdout): R2(log)=0.7571
+2026-09-10 02:30:43,391 | INFO     | MainPipeline |   Ensemble trained: ['xgb', 'lgb', 'catboost']
+2026-09-10 02:30:43,391 | INFO     | MainPipeline | STEP 9: Evaluation on held-out TEST set...
+2026-09-10 02:30:43,492 | INFO     | MainPipeline |   total_btu   : R2=0.6002 RMSE=31,787 kBtu cov90=0.848 R2w=0.5813
+2026-09-10 02:30:43,492 | INFO     | MainPipeline |   conformal calibration: mode=calib-split (n_calib=200); test coverage curve: 80%->77.5%, 90%->84.8%, 95%->91.5%
+2026-09-10 02:30:43,492 | WARNING  | MainPipeline |   [CONFORMAL] nominal 90% interval covered 84.8% on test (-5.2 pp, tolerance 3.0 pp; n_calib=200, n_test=600) - report the observed coverage alongside the claim
+2026-09-10 02:30:43,492 | WARNING  | MainPipeline |   [CONFORMAL] nominal 95% interval covered 91.5% on test (-3.5 pp, tolerance 3.0 pp; n_calib=200, n_test=600) - report the observed coverage alongside the claim
+2026-09-10 02:30:43,492 | INFO     | MainPipeline |   population calibration error: -11.17%
+2026-09-10 02:30:43,493 | INFO     | MainPipeline |   eui derived : R2=0.5665 RMSE=23.31 kBtu/sqft
+2026-09-10 02:30:43,493 | INFO     | MainPipeline |   eui direct  : R2=0.5685  (ablation, v7-style)
+2026-09-10 02:30:43,494 | INFO     | MainPipeline |   eui_heating : R2=0.5791 RMSE=14.88
+2026-09-10 02:30:43,495 | INFO     | MainPipeline |   eui_cooling : R2=0.5938 RMSE=2.87
+2026-09-10 02:30:43,495 | INFO     | MainPipeline |   eui_dhw     : R2=0.6065 RMSE=4.87
+2026-09-10 02:30:43,496 | INFO     | MainPipeline |   eui_lighting: R2=0.2946 RMSE=2.44
+2026-09-10 02:30:43,542 | INFO     | MainPipeline |   ensemble    : R2=0.6070 RMSE=31,514 kBtu
+2026-09-10 02:30:44,019 | INFO     | publication_outputs | Prediction figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/pred_vs_actual_total_btu_test.pdf
+2026-09-10 02:30:44,581 | INFO     | publication_outputs | Prediction figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/pred_vs_actual_ensemble_test.pdf
+2026-09-10 02:30:44,786 | INFO     | publication_outputs | Coverage figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/coverage_conformal.pdf
+2026-09-10 02:30:44,998 | INFO     | publication_outputs | Architecture schematic saved (vector): /home/user/building_energy_pipeline/outputs/figures/architecture.pdf
+2026-09-10 02:30:46,603 | INFO     | shap_analysis | Top-10 features (shap, single run): ['TL_pred_logbtu', 'FUELHEAT', 'TYPEHUQ', 'FUELH2O', 'PH_occ_x_sqft', 'PH_vintage_x_HDD', 'TEMPHOME', 'PH_HDD_x_sqft', 'BEDROOMS', 'DRYRUSE']
+2026-09-10 02:30:46,844 | INFO     | shap_analysis | SHAP figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/feature_importance_total.pdf
+2026-09-10 02:30:46,844 | INFO     | MainPipeline | ============================================================
+2026-09-10 02:30:46,844 | INFO     | MainPipeline | FINAL RESULTS (test set)
+2026-09-10 02:30:46,844 | INFO     | MainPipeline | ============================================================
+2026-09-10 02:30:46,844 | INFO     | MainPipeline |   total_btu (primary)             : R2=0.6002 (target 0.85) [BELOW TARGET]
+2026-09-10 02:30:46,844 | INFO     | MainPipeline |   eui (derived)                   : R2=0.5665 (target 0.7) [BELOW TARGET]
+2026-09-10 02:30:46,844 | INFO     | MainPipeline |   eui_heating                     : R2=0.5791 (target 0.7) [BELOW TARGET]
+2026-09-10 02:30:46,844 | INFO     | MainPipeline |   eui_cooling                     : R2=0.5938 (target 0.7) [BELOW TARGET]
+2026-09-10 02:30:46,844 | INFO     | MainPipeline |   eui_dhw                         : R2=0.6065 (target 0.7) [BELOW TARGET]
+2026-09-10 02:30:46,844 | INFO     | MainPipeline |   eui_lighting                    : R2=0.2946 (target 0.7) [BELOW TARGET]
+2026-09-10 02:30:46,844 | INFO     | MainPipeline |   total_btu (stacked ensemble)    : R2=0.6070 (target 0.85) [BELOW TARGET]
+2026-09-10 02:30:46,845 | INFO     | MainPipeline | STEP 10: Leave-one-climate-out generalization (honest refit)...
+2026-09-10 02:30:46,845 | INFO     | climate_validation | LOGO protocol: FE + selection refit from scratch per fold.
+2026-09-10 02:30:46,859 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:30:46,859 | INFO     | feature_engineering | FEATURE ENGINEERING v8.0 (fit on train only)
+2026-09-10 02:30:46,859 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:30:46,906 | INFO     | feature_engineering | Categorical: 557, Numeric: 143
+2026-09-10 02:30:47,154 | INFO     | feature_engineering | Ordinal encoder fitted on 557 categorical columns (train only)
+2026-09-10 02:30:48,011 | INFO     | feature_selection | Dropped 9 all-NaN/constant columns before selection
+2026-09-10 02:30:56,867 | INFO     | feature_selection | Selected 250 features (physics: 43, from 691 available, train-only)
+2026-09-10 02:31:00,456 | INFO     | climate_validation |   LOGO zone=Cold    : R2(log total)=0.6802 (n_train=2,319, n_test=1,681, features=250)
+2026-09-10 02:31:00,471 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:31:00,471 | INFO     | feature_engineering | FEATURE ENGINEERING v8.0 (fit on train only)
+2026-09-10 02:31:00,471 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:31:00,515 | INFO     | feature_engineering | Categorical: 556, Numeric: 144
+2026-09-10 02:31:00,864 | INFO     | feature_engineering | Ordinal encoder fitted on 556 categorical columns (train only)
+2026-09-10 02:31:01,801 | INFO     | feature_selection | Dropped 10 all-NaN/constant columns before selection
+2026-09-10 02:31:12,011 | INFO     | feature_selection | Selected 250 features (physics: 43, from 690 available, train-only)
+2026-09-10 02:31:15,444 | INFO     | climate_validation |   LOGO zone=Hot     : R2(log total)=0.5964 (n_train=3,085, n_test=915, features=250)
+2026-09-10 02:31:15,458 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:31:15,458 | INFO     | feature_engineering | FEATURE ENGINEERING v8.0 (fit on train only)
+2026-09-10 02:31:15,458 | INFO     | feature_engineering | ============================================================
+2026-09-10 02:31:15,500 | INFO     | feature_engineering | Categorical: 557, Numeric: 143
+2026-09-10 02:31:15,775 | INFO     | feature_engineering | Ordinal encoder fitted on 557 categorical columns (train only)
+2026-09-10 02:31:16,652 | INFO     | feature_selection | Dropped 9 all-NaN/constant columns before selection
+2026-09-10 02:31:27,060 | INFO     | feature_selection | Selected 250 features (physics: 43, from 691 available, train-only)
+2026-09-10 02:31:30,115 | INFO     | climate_validation |   LOGO zone=Mixed   : R2(log total)=0.6980 (n_train=2,596, n_test=1,404, features=250)
+2026-09-10 02:31:30,116 | INFO     | climate_validation |   LOGO mean R2: 0.6582 (min 0.5964) | sum n_test = 4,000 (full dataset)
+2026-09-10 02:31:30,121 | INFO     | MainPipeline |   LOGO table saved: /home/user/building_energy_pipeline/outputs/tables/logo_climate_20260910_022602.csv
+2026-09-10 02:31:30,326 | INFO     | publication_outputs | LOGO figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/logo_climate.pdf
+2026-09-10 02:31:30,326 | INFO     | MainPipeline | STEP 11: Leakage audit (v8.1, JSON report)...
+2026-09-10 02:31:30,331 | INFO     | leakage_audit | ============================================================
+2026-09-10 02:31:30,331 | INFO     | leakage_audit | LEAKAGE AUDIT v8.1
+2026-09-10 02:31:30,331 | INFO     | leakage_audit | ============================================================
+2026-09-10 02:31:30,332 | INFO     | leakage_audit |   [A-PASS] No forbidden columns in train features.
+2026-09-10 02:31:30,332 | INFO     | leakage_audit |   [A-PASS] No forbidden columns in val features.
+2026-09-10 02:31:30,332 | INFO     | leakage_audit |   [A-PASS] No forbidden columns in calib features.
+2026-09-10 02:31:30,332 | INFO     | leakage_audit |   [A-PASS] No forbidden columns in test features.
+2026-09-10 02:31:30,489 | INFO     | leakage_audit |   [B-PASS] No single feature with |r|>0.90 vs target.
+2026-09-10 02:31:30,493 | INFO     | leakage_audit |   [C-PASS] No exact train/test row duplicates.
+2026-09-10 02:31:30,785 | INFO     | leakage_audit |   [D-PASS] Fitted-transformer verification (verified): medians re-derived from raw train match stored values; encoder categories are a subset of train.
+2026-09-10 02:31:30,785 | INFO     | leakage_audit |   [E-FLAG] No implausibly perfect score (R2 > 0.99). (early-warning flag, not counted as a test)
+2026-09-10 02:31:30,785 | INFO     | leakage_audit |   [F-INFO] Feature selection on train split only: True. (procedural, not counted as a test)
+2026-09-10 02:31:31,113 | INFO     | leakage_audit |   [G-PASS] Linear-combination reconstruction: best 4-feature group R2=0.5643 (limit 0.95).
+2026-09-10 02:31:31,114 | INFO     | leakage_audit |   [H-PASS] Target-derived column lineage check: 0 found.
+2026-09-10 02:31:31,114 | INFO     | leakage_audit | LEAKAGE AUDIT RESULT: PASS (9 data tests + 2 documented flags)
+2026-09-10 02:31:31,114 | INFO     | leakage_audit |   Audit JSON report: /home/user/building_energy_pipeline/outputs/tables/leakage_audit_20260910_023131.json
+2026-09-10 02:31:31,115 | INFO     | MainPipeline | STEP 12: Counterfactual retrofit analysis...
+2026-09-10 02:31:31,118 | INFO     | decision_support |   ResStock delta upgrade 3: paired=+3.8% naive=+4.7% (per-building on bldg_id, n=6,000, coverage 100%)
+2026-09-10 02:31:31,120 | INFO     | decision_support |   ResStock delta upgrade 4: paired=+16.8% naive=+20.1% (per-building on bldg_id, n=6,000, coverage 100%)
+2026-09-10 02:31:31,123 | INFO     | decision_support |   ResStock delta upgrade 10: paired=+1.3% naive=-2.1% (per-building on bldg_id, n=848, coverage 100%)
+2026-09-10 02:31:31,126 | INFO     | decision_support |   ResStock delta upgrade 11: paired=+4.6% naive=+4.4% (per-building on bldg_id, n=894, coverage 100%)
+2026-09-10 02:31:31,129 | INFO     | decision_support |   ResStock delta upgrade 15: paired=+4.0% naive=+3.9% (per-building on bldg_id, n=870, coverage 100%)
+2026-09-10 02:31:31,132 | INFO     | decision_support | Counterfactual scenarios on 600 households (mode: physics-only)...
+2026-09-10 02:31:31,484 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.141
+2026-09-10 02:31:31,995 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.139
+2026-09-10 02:31:32,017 | INFO     | decision_support |   Reference HVAC 2025     : mean savings =   0.0%  (median   0.0%)
+    vs ResStock matched:   3.8%  (delta -3.8 pp)
+2026-09-10 02:31:32,417 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.083
+2026-09-10 02:31:32,431 | INFO     | decision_support |   Cold Climate ASHP       : mean savings =   0.9%  (median   0.2%)
+    vs ResStock matched:  16.8%  (delta -15.9 pp)
+2026-09-10 02:31:32,813 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.130
+2026-09-10 02:31:32,827 | INFO     | decision_support |   Air Sealing             : mean savings =   0.4%  (median   0.0%)
+    vs ResStock matched:   1.3%  (delta -0.9 pp)
+2026-09-10 02:31:33,186 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.032
+2026-09-10 02:31:33,199 | INFO     | decision_support |   Attic Insulation        : mean savings =   0.7%  (median   0.4%)
+    vs ResStock matched:   4.6%  (delta -3.9 pp)
+2026-09-10 02:31:33,555 | INFO     | transfer_learning |   KD meta-features added: TL_pred_logbtu mean=11.139
+2026-09-10 02:31:33,571 | INFO     | decision_support |   ENERGY STAR Windows     : mean savings =   0.4%  (median   0.0%)
+    vs ResStock matched:   4.0%  (delta -3.5 pp)
+2026-09-10 02:31:33,574 | INFO     | MainPipeline |   Counterfactual table saved: /home/user/building_energy_pipeline/outputs/tables/counterfactual_20260910_022602.csv
+2026-09-10 02:31:33,574 | INFO     | MainPipeline | STEP 12b: Simulation-derived savings (CATE delta teachers)...
+2026-09-10 02:31:35,073 | INFO     | transfer_learning |   Delta teacher 3: savings model trained, bldg_id (n=6,000), mean delta=3.8%
+2026-09-10 02:31:36,406 | INFO     | transfer_learning |   Delta teacher 4: savings model trained, bldg_id (n=6,000), mean delta=16.8%
+2026-09-10 02:31:37,027 | INFO     | transfer_learning |   Delta teacher 10: savings model trained, bldg_id (n=848), mean delta=1.3%
+2026-09-10 02:31:37,656 | INFO     | transfer_learning |   Delta teacher 11: savings model trained, bldg_id (n=894), mean delta=4.6%
+2026-09-10 02:31:38,330 | INFO     | transfer_learning |   Delta teacher 15: savings model trained, bldg_id (n=870), mean delta=4.0%
+2026-09-10 02:31:38,363 | INFO     | decision_support |   [teacher] Reference HVAC 2025   : mean   4.2% (median   1.7%, p10  -0.4, p90  14.9)  | measured   3.8% (gap +0.4 pp)
+2026-09-10 02:31:38,395 | INFO     | decision_support |   [teacher] Cold Climate ASHP     : mean  13.9% (median   8.3%, p10  -1.3, p90  40.0)  | measured  16.8% (gap -2.9 pp)
+2026-09-10 02:31:38,423 | INFO     | decision_support |   [teacher] Air Sealing           : mean   1.0% (median   0.9%, p10   0.7, p90   1.5)  | measured   1.3% (gap -0.3 pp)
+2026-09-10 02:31:38,450 | INFO     | decision_support |   [teacher] Attic Insulation      : mean   6.4% (median   6.1%, p10   2.2, p90  10.8)  | measured   4.6% (gap +1.8 pp)
+2026-09-10 02:31:38,472 | INFO     | decision_support |   [teacher] ENERGY STAR Windows   : mean   3.2% (median   2.9%, p10   1.9, p90   4.9)  | measured   4.0% (gap -0.8 pp)
+2026-09-10 02:31:38,473 | INFO     | MainPipeline |   Teacher counterfactual table saved: /home/user/building_energy_pipeline/outputs/tables/counterfactual_teacher_20260910_022602.csv
+2026-09-10 02:31:38,778 | INFO     | publication_outputs | Counterfactual figure saved (vector): /home/user/building_energy_pipeline/outputs/figures/counterfactual.pdf
+2026-09-10 02:31:39,013 | INFO     | model_training | Model saved: /home/user/building_energy_pipeline/outputs/models/energy_conserving_model_v8_20260910_022602.pkl
+2026-09-10 02:31:39,091 | INFO     | ensemble_models | Ensemble saved: /home/user/building_energy_pipeline/outputs/models/stacking_ensemble_v8_20260910_022602.pkl
+2026-09-10 02:31:39,096 | INFO     | results_manifest | Manifest saved: /home/user/building_energy_pipeline/outputs/tables/paper_tables/run_manifest_20260910_022602.json (+ 4 paper tables in /home/user/building_energy_pipeline/outputs/tables/paper_tables)
+2026-09-10 02:31:39,096 | INFO     | MainPipeline | ======================================================================
+2026-09-10 02:31:39,096 | INFO     | MainPipeline | # PIPELINE COMPLETE in 337.0s
+2026-09-10 02:31:39,096 | INFO     | MainPipeline |   Leakage audit: PASS | Log: /home/user/building_energy_pipeline/logs/pipeline_v8_20260910_022602.log
+2026-09-10 02:31:39,097 | INFO     | MainPipeline |   Manifest: /home/user/building_energy_pipeline/outputs/tables/paper_tables
+2026-09-10 02:31:39,097 | INFO     | MainPipeline | ======================================================================
+SMOKE_EXIT=0
